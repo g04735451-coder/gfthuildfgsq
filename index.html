@@ -1,0 +1,257 @@
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم ثبت نام دوره</title>
+    <style>
+        /* فونت تاهوما و پس‌زمینه سبز ملایم حفظ می‌شود */
+        body {
+            font-family: 'Tahoma', 'Vazirmatn', sans-serif;
+            background-color: #c8e6c9; /* حفظ پس‌زمینه سبز ملایم */
+            color: #000000; /* تمام متن‌ها مشکی */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease;
+        }
+        .container {
+            background-color: #ffffff; 
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            max-width: 550px;
+            width: 95%;
+            text-align: center;
+            border: 2px solid #cccccc;
+        }
+        .intro-text {
+            margin-bottom: 30px;
+        }
+        .intro-text h1 {
+            color: #1976d2; /* حفظ رنگ آبی تیتر */
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+        .intro-text .greeting {
+            font-size: 1.2em;
+            color: #000000; /* متن مشکی */
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .intro-text p {
+            line-height: 2.0;
+            font-size: 1.15em;
+            color: #000000; /* پاراگراف‌ها مشکی */
+        }
+        #registrationForm {
+            display: none;
+            text-align: right;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #000000; /* لیبل‌ها مشکی */
+        }
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            color: #333;
+            font-size: 1em;
+        }
+        /* استایل جدید و زیباتر برای رادیو باتن‌ها */
+        .radio-group {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px; /* فاصله بین گزینه‌ها */
+            padding: 5px 0;
+        }
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: bold;
+            color: #000000;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+            background-color: #f9f9f9;
+        }
+        .radio-group input[type="radio"] {
+            display: none; /* مخفی کردن رادیو دکمه اصلی */
+        }
+        /* استایل دکمه رادیو هنگامی که انتخاب شده است */
+        .radio-group input[type="radio"]:checked + label {
+            background-color: #1976d2; /* رنگ آبی برای دکمه انتخاب شده */
+            color: white;
+            border-color: #1976d2;
+            box-shadow: 0 2px 5px rgba(25, 118, 210, 0.5);
+        }
+        /* دکمه ارسال: حفظ رنگ آبی */
+        .submit-btn {
+            background-color: #1976d2; /* حفظ رنگ آبی */
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background-color: #1565c0;
+            transform: translateY(-2px);
+        }
+        .submit-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .message-box {
+            display: none;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid;
+        }
+        .success-bg {
+            background-color: #198754;
+            color: #ffffff;
+            border-color: #198754;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="intro-text">
+        <h1>لحظه‌ی سرنوشت ساز فرا رسید!</h1>
+        <div class="greeting">سلام رفیق</div>
+        <p>اگر این صفحه را می‌بینی، یعنی آینده‌ی خودت برایت یک اولویت مطلق است.</p>
+        <p>صادقانه بگویم؛ این مهم‌ترین تصمیمی است که تا امروز گرفته‌ای و مسیر کل زندگی‌ات را ترسیم خواهد کرد.</p>
+        <p>شاید اطلاعات کاملی داشته باشی، یا شاید هم کاملاً در ابهام باشی.</p>
+        <p>در هر صورت، لطفاً فرم زیر را تکمیل کن. با هم ارتباط برقرار می‌کنیم و در اولین جلسه، که کاملاً **رایگان** است، بخش مهمی از این مسیر را آغاز خواهیم کرد.</p>
+    </div>
+
+    <button id="revealFormBtn" class="submit-btn" style="background-color: #1976d2; margin-top: 10px;">آغاز کن! (مشاهده فرم)</button>
+
+    <div id="registrationForm">
+        <h2>فرم شرکت در دوره تعیین رشته</h2>
+        <form action="https://script.google.com/macros/s/AKfycbw3CuixNhbM7dpPUzEdVkxfC2rwRSsEN05qhq5bLnJfw-oRa7qk0U2ZW5JxvbRpJX3Q6Q/exec" method="POST">
+            
+            <div class="form-group">
+                <label for="fullName">نام و نام خانوادگی:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="region">منطقه:</label>
+                <input type="text" id="region" name="region" required>
+            </div>
+
+            <div class="form-group">
+                <label for="schoolName">نام مدرسه:</label>
+                <input type="text" id="schoolName" name="schoolName">
+            </div>
+
+            <div class="form-group">
+                <label>جنسیت:</label>
+                <div class="radio-group">
+                    <!-- *** تغییرات اعمال شد: value و label به "آقا" و "خانم" تغییر یافت *** -->
+                    <input type="radio" id="genderMale" name="gender" value="male" required>
+                    <label for="genderMale">آقا</label>
+                    <input type="radio" id="genderFemale" name="gender" value="female">
+                    <label for="genderFemale">خانم</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">شماره موبایل:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10,11}">
+            </div>
+
+            <!-- دکمه ارسال با متن "ثبت" و رنگ آبی -->
+            <button type="submit" id="submitButton" class="submit-btn">ثبت</button>
+        </form>
+    </div>
+
+    <div id="successMessage" class="message-box">
+        ثبت نام شما با موفقیت انجام شد! به‌زودی برای هماهنگی جلسه رایگان با شما تماس خواهیم گرفت.
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealButton = document.getElementById('revealFormBtn');
+        const formContainer = document.getElementById('registrationForm');
+        const form = formContainer.querySelector('form');
+        const successMessage = document.getElementById('successMessage');
+        const submitButton = document.getElementById('submitButton');
+
+        // 1. نمایش فرم پس از کلیک روی دکمه "بزن بریم"
+        revealButton.addEventListener('click', function() {
+            document.querySelector('.intro-text').style.display = 'none';
+            revealButton.style.display = 'none';
+            formContainer.style.display = 'block';
+        });
+
+        // 2. مدیریت ارسال فرم (AJAX)
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // جلوگیری از ارسال عادی فرم
+
+            const formData = new FormData(form);
+            const actionUrl = form.action;
+
+            // غیرفعال کردن دکمه حین ارسال
+            submitButton.disabled = true;
+            submitButton.textContent = 'در حال ارسال...';
+
+            fetch(actionUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('خطا در ارسال: ' + response.statusText);
+                }
+            })
+            .then(data => {
+                // موفقیت: مخفی کردن فرم، نمایش پیغام موفقیت
+                formContainer.style.display = 'none';
+                successMessage.style.display = 'block';
+                successMessage.classList.add('success-bg');
+                // تغییر ظاهر صفحه برای تاکید بر موفقیت
+                document.querySelector('.container').style.boxShadow = '0 0 30px #198754';
+                submitButton.disabled = true;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // نمایش پیغام خطا به کاربر
+                submitButton.textContent = 'تلاش مجدد';
+                submitButton.disabled = false;
+                alert('ارسال با خطا مواجه شد. لطفاً مجدداً شماره موبایل خود را چک کنید یا دوباره تلاش کنید.');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
